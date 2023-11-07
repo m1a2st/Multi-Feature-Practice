@@ -1,0 +1,49 @@
+server:
+  port: 8888
+
+spring:
+  postgres:
+    datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:11111/postgres
+      username: postgres
+      password: ${PASSWORD}
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        connection-timeout: 60000
+        maximum-pool-size: 15
+        minimum-idle: 5
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        pool-name: PostgresHikari
+        auto-commit: true
+        connection-test-query: SELECT 1
+  mysql:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:11112/test?allowPublicKeyRetrieval=true
+      username: root
+      password: ${PASSWORD}
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        connection-timeout: 60000
+        maximum-pool-size: 15
+        minimum-idle: 5
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        pool-name: MysqlHikari
+        auto-commit: true
+        connection-test-query: SELECT 1
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    generate-ddl: true
+logging:
+  charset:
+    console: UTF-8
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%5p) %clr(${PID:- }){magenta} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wex"
+  level:
+    root: info

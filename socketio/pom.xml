@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Multi-Artictecture-Socketio</artifactId>
+    <name>socketio</name>
+    <version>${revision}</version>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>Multi-Architecture-Root</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>${encode}</project.build.sourceEncoding>
+        <netty-socketio.version>2.0.3</netty-socketio.version>
+        <spring-boot.version>2.7.17</spring-boot.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.corundumstudio.socketio</groupId>
+            <artifactId>netty-socketio</artifactId>
+            <version>${netty-socketio.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>

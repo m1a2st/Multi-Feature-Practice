@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Multi-Artictecture-Application</artifactId>
+    <name>application</name>
+    <version>${revision}</version>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>Multi-Architecture-Root</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>${encode}</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Multi-Architecture-Domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+    </build>
+</project>
