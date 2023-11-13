@@ -44,7 +44,7 @@ public class mysqlConfig {
     public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(mysqlDataSource())
-                .packages("com.example.caffeine.entity.mysql")
+                .packages("com.example.spring.entity.mysql")
                 .build();
     }
 

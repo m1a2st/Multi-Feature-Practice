@@ -14,6 +14,8 @@
         <module>application</module>
         <module>spring</module>
         <module>socketio</module>
+        <module>util</module>
+        <module>logging</module>
     </modules>
 
     <properties>

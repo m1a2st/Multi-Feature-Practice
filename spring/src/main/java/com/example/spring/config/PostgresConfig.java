@@ -49,7 +49,7 @@ public class PostgresConfig {
     public LocalContainerEntityManagerFactoryBean postgresEntityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(postgresDataSource())
-                .packages("com.example.caffeine.entity.postgres")
+                .packages("com.example.spring.entity.postgres")
                 .build();
     }
 

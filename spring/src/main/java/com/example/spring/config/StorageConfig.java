@@ -24,6 +24,6 @@ public class StorageConfig {
     public CacheManager cacheManager(Caffeine<Object, Object> caffeine){
         CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
         caffeineCacheManager.setCaffeine(caffeine);
-        return null;
+        return caffeineCacheManager;
     }
 }

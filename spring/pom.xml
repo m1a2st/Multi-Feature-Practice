@@ -22,13 +22,18 @@
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
+            <artifactId>Multi-Artictecture-Logging</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
             <artifactId>Multi-Artictecture-Socketio</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>Multi-Artictecture-Application</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
