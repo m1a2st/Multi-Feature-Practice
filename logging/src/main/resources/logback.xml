@@ -6,43 +6,39 @@
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>logging/logs/app.log</file>
+        <filter class="com.example.MessageFilter"/>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
-            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.gz</fileNamePattern>
-
-            <!-- keep 30 days' worth of history capped at 3GB total size -->
-            <maxHistory>30</maxHistory>
-            <totalSizeCap>3GB</totalSizeCap>
-        </rollingPolicy>
     </appender>
-    <appender name="DB" class="ch.qos.logback.core.FileAppender">
+    <appender name="DB" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logging/logs/db.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
-            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.gz</fileNamePattern>
-
-            <!-- keep 30 days' worth of history capped at 3GB total size -->
-            <maxHistory>30</maxHistory>
-            <totalSizeCap>3GB</totalSizeCap>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logging/logs/roll-by-time-and-size/app.%d{yyyy-MM-dd-mm}.%i.log.zip</fileNamePattern>
+            <maxFileSize>5KB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
         </rollingPolicy>
     </appender>
-<!--    <logger name="com.example.Test" level="trace" additivity="false">-->
-<!--        <appender-ref ref="STDOUT" />-->
-<!--        <appender-ref ref="FILE" />-->
+<!--    <logger name="com.example.LogBackRollingExample" level="info">-->
+<!--        <appender-ref ref="STDOUT"/>-->
+<!--        <appender-ref ref="DB"/>-->
 <!--    </logger>-->
     <root level="info">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
     <root level="debug">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="FILE"/>
     </root>
     <root level="trace">
-        <appender-ref ref="DB" />
+        <appender-ref ref="DB"/>
     </root>
 </configuration>
