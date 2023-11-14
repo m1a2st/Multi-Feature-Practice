@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>Multi-Architecture-Spring</artifactId>
@@ -22,7 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Multi-Artictecture-Logging</artifactId>
+            <artifactId>Multi-Artictecture-Manticore</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>5.3.29</version>
+            <version>6.0.6</version>
         </dependency>
     </dependencies>
     <dependencyManagement>

@@ -16,6 +16,7 @@
         <module>socketio</module>
         <module>util</module>
         <module>logging</module>
+        <module>manticoresearch</module>
     </modules>
 
     <properties>

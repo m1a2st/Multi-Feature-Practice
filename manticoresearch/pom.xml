@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Multi-Artictecture-Manticore</artifactId>
+    <name>manticore</name>
+    <version>${revision}</version>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>Multi-Architecture-Root</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>${encode}</project.build.sourceEncoding>
+        <manticore.version>3.3.0</manticore.version>
+        <spring-boot.version>2.7.17</spring-boot.version>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.manticoresearch/manticoresearch -->
+        <dependency>
+            <groupId>com.manticoresearch</groupId>
+            <artifactId>manticoresearch</artifactId>
+            <version>${manticore.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>
