@@ -1,5 +1,10 @@
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -23,9 +28,9 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>logging/logs/roll-by-time-and-size/app.%d{yyyy-MM-dd-mm}.%i.log.zip</fileNamePattern>
-            <maxFileSize>5KB</maxFileSize>
+            <maxFileSize>50MB</maxFileSize>
             <maxHistory>20</maxHistory>
-            <totalSizeCap>1MB</totalSizeCap>
+            <totalSizeCap>50MB</totalSizeCap>
         </rollingPolicy>
     </appender>
 <!--    <logger name="com.example.LogBackRollingExample" level="info">-->

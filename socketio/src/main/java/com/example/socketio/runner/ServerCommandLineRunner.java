@@ -1,4 +1,4 @@
-//package com.example.spring.runner;
+//package com.example.socketio.runner;
 //
 //import com.corundumstudio.socketio.SocketIOServer;
 //import lombok.RequiredArgsConstructor;

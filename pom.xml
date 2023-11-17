@@ -17,6 +17,7 @@
         <module>util</module>
         <module>logging</module>
         <module>manticoresearch</module>
+        <module>rabbitmq</module>
     </modules>
 
     <properties>

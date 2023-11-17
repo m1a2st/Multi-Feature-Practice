@@ -22,6 +22,16 @@
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
+            <artifactId>Multi-Artictecture-Rabbitmq</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>Multi-Artictecture-Logging</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
             <artifactId>Multi-Artictecture-Manticore</artifactId>
             <version>${revision}</version>
         </dependency>

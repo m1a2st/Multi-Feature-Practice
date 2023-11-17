@@ -40,13 +40,6 @@ spring:
       ddl-auto: create
     show-sql: true
     generate-ddl: true
-logging:
-  charset:
-    console: UTF-8
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%5p) %clr(${PID:- }){magenta} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wex"
-  level:
-    root: info
 
 customer:
   string:
