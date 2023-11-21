@@ -18,6 +18,7 @@
         <module>logging</module>
         <module>manticoresearch</module>
         <module>rabbitmq</module>
+        <module>excel</module>
     </modules>
 
     <properties>
