@@ -22,27 +22,27 @@
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Multi-Artictecture-Rabbitmq</artifactId>
+            <artifactId>Multi-Architecture-Rabbitmq</artifactId>
+            <version>${revision}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.example</groupId>-->
+<!--            <artifactId>Multi-Architecture-Logging</artifactId>-->
+<!--            <version>${revision}</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>Multi-Architecture-Manticore</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Multi-Artictecture-Logging</artifactId>
+            <artifactId>Multi-Architecture-Socketio</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Multi-Artictecture-Manticore</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>Multi-Artictecture-Socketio</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>Multi-Artictecture-Application</artifactId>
+            <artifactId>Multi-Architecture-Application</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
