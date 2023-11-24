@@ -2,12 +2,10 @@ package com.example.aspose;
 
 
 import com.aspose.cells.*;
-import org.junit.jupiter.api.Test;
 
 public class AsposeTest {
 
-    @Test
-    public void testWorkbook() throws Exception {
+    public static void main(String[] args) throws Exception {
         Workbook workbook = new Workbook();
         WorksheetCollection worksheets = workbook.getWorksheets();
         worksheets.add("Sheet123");

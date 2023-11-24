@@ -1,18 +1,47 @@
 package com.example.rabbitmq.configs;
 
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.example.rabbitmq.constants.Constants.*;
+
 @Configuration
 public class RabbitConfig {
 
     @Bean
     public Queue helloQueue() {
-        return new Queue("hello");
+        return new Queue(HELLO_QUEUE);
+    }
+
+    @Bean
+    public Queue internalNotificationQueue() {
+        return new Queue(NAME_INTERNAL_NOTIFICATION_QUEUE);
+    }
+
+    @Bean
+    public Queue emailNotificationQueue() {
+        return new Queue(NAME_EMAIL_NOTIFICATION_QUEUE);
+    }
+
+    @Bean(name = BEAN_COMMENT_NOTIFICATION_FANOUT_EXCHANGE)
+    public FanoutExchange commentNotificationFanoutExchange() {
+        return new FanoutExchange(NAME_COMMENT_NOTIFICATION_FANOUT_EXCHANGE);
+    }
+
+    @Bean
+    public Binding bindInternalNotificationQueueToFanoutExchange() {
+        return BindingBuilder.bind(internalNotificationQueue())
+                .to(commentNotificationFanoutExchange());
+    }
+
+    @Bean
+    public Binding bindEmailNotificationQueueToFanoutExchange() {
+        return BindingBuilder.bind(emailNotificationQueue())
+                .to(commentNotificationFanoutExchange());
     }
 
     @Bean
