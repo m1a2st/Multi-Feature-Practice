@@ -12,6 +12,10 @@ import static com.example.rabbitmq.constants.Constants.*;
 @Configuration
 public class RabbitConfig {
 
+    /*******************************************************************************
+     * Queue                                                                       *
+     * *****************************************************************************
+     */
     @Bean
     public Queue helloQueue() {
         return new Queue(HELLO_QUEUE);
@@ -26,6 +30,11 @@ public class RabbitConfig {
     public Queue emailNotificationQueue() {
         return new Queue(NAME_EMAIL_NOTIFICATION_QUEUE);
     }
+
+    /*******************************************************************************
+     * FANOUT Exchange                                                             *
+     * *****************************************************************************
+     */
 
     @Bean(name = BEAN_COMMENT_NOTIFICATION_FANOUT_EXCHANGE)
     public FanoutExchange commentNotificationFanoutExchange() {
@@ -44,6 +53,34 @@ public class RabbitConfig {
                 .to(commentNotificationFanoutExchange());
     }
 
+    /*******************************************************************************
+     * Direct Exchange                                                             *
+     * *****************************************************************************
+     */
+    @Bean(name = BEAN_COMMENT_NOTIFICATION_DIRECT_EXCHANGE)
+    public DirectExchange commentNotificationDirectExchange() {
+        return new DirectExchange(NAME_COMMENT_NOTIFICATION_DIRECT_EXCHANGE);
+    }
+
+    @Bean
+    public Binding bindInternalNotificationQueueToDirectExchange() {
+        return BindingBuilder.bind(internalNotificationQueue())
+                .to(commentNotificationDirectExchange())
+                .with("Internal");
+    }
+
+    @Bean
+    public Binding bindEmailNotificationQueueToDirectExchange() {
+        return BindingBuilder.bind(emailNotificationQueue())
+                .to(commentNotificationDirectExchange())
+                .with("Email");
+    }
+
+    /*******************************************************************************
+     * Converter                                                                   *
+     * *****************************************************************************
+     */
+
     @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {
         Jackson2JsonMessageConverter converter = new Jackson2JsonMessageConverter();
@@ -51,6 +88,11 @@ public class RabbitConfig {
         converter.setDefaultCharset("UTF-8");
         return converter;
     }
+
+    /*******************************************************************************
+     * RabbitTemplate                                                              *
+     * *****************************************************************************
+     */
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
