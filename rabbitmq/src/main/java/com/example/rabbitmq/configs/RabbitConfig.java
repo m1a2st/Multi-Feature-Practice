@@ -104,6 +104,36 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
+     * Topic Exchange
+     *******************************************************************************
+     */
+    @Bean(name = BEAN_COMMENT_NOTIFICATION_TOPIC_EXCHANGE)
+    public TopicExchange commentNotificationTopicExchange() {
+        return new TopicExchange(NAME_COMMENT_NOTIFICATION_TOPIC_EXCHANGE);
+    }
+
+    @Bean
+    public Binding bindInternalNotificationQueueToTopicExchangeForPostComment() {
+        return BindingBuilder.bind(internalNotificationQueue())
+                .to(commentNotificationTopicExchange())
+                .with("post.#");
+    }
+
+    @Bean
+    public Binding bindInternalNotificationQueueToTopicExchangeForProductComment() {
+        return BindingBuilder.bind(internalNotificationQueue())
+                .to(commentNotificationTopicExchange())
+                .with("product.*");
+    }
+
+    @Bean
+    public Binding bindEmailNotificationQueueToTopicExchangeForProductComment() {
+        return BindingBuilder.bind(emailNotificationQueue())
+                .to(commentNotificationTopicExchange())
+                .with("product.*.#");
+    }
+
+    /*******************************************************************************
      * Converter
      *******************************************************************************
      */
