@@ -85,7 +85,6 @@
                         <goals>
                             <goal>apply</goal>
                             <goal>check</goal>
-                            <goal>apply</goal>
                         </goals>
                         <configuration>
                             <java>
