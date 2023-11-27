@@ -1,9 +1,8 @@
 package com.example.spring.entity;
 
 import com.example.spring.entity.postgres.UserAccount;
-import lombok.extern.slf4j.Slf4j;
-
 import javax.persistence.*;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class UserAccountListener {

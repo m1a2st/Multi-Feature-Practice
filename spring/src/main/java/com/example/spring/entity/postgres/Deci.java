@@ -1,9 +1,8 @@
 package com.example.spring.entity.postgres;
 
-import lombok.Data;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
+import javax.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "deci")
@@ -13,5 +12,6 @@ public class Deci {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private BigDecimal one;
 }

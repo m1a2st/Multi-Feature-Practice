@@ -4,13 +4,12 @@ import com.example.spring.entity.postgres.PropertiesMap;
 import com.example.spring.propmap.annotation.PropMapBean;
 import com.example.spring.propmap.models.PropMapGroup;
 import com.example.spring.repository.postgres.PropertiesMapRepository;
+import java.util.*;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +19,7 @@ public class PropMapService {
     private final ApplicationContext context;
     private final Environment environment;
 
-    public List<PropertiesMap> findAll(){
+    public List<PropertiesMap> findAll() {
         return propertiesMapRepository.findAll();
     }
 
@@ -59,8 +58,8 @@ public class PropMapService {
         // 取得所有符合 group 的 bean
         return Arrays.stream(beanNamesForAnnotation)
                 .map(context::getBean)
-                .filter((bean) -> bean.getClass().getAnnotation(PropMapBean.class).group().equals(group))
+                .filter((bean) ->
+                        bean.getClass().getAnnotation(PropMapBean.class).group().equals(group))
                 .collect(Collectors.toList());
     }
-
 }

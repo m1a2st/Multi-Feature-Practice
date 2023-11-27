@@ -10,6 +10,7 @@ public class AccountPropMap {
 
     @PropMapKey("account")
     private String account;
+
     @PropMapKey("password")
     private String password;
 }

@@ -11,8 +11,10 @@ public class ServerPropMap {
 
     @PropMapKey("url")
     private String url;
+
     @PropMapKey("auth")
     private String auth;
+
     @PropMapKey("none")
     @PropMapDefaultValue("default")
     private String none;

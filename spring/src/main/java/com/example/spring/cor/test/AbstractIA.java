@@ -1,6 +1,6 @@
 package com.example.spring.cor.test;
 
-public abstract class AbstractIA implements IA{
+public abstract class AbstractIA implements IA {
 
     private IA next;
 
@@ -12,7 +12,7 @@ public abstract class AbstractIA implements IA{
     @Override
     public void doSomething() {
         doSomethingElse();
-        if(next != null){
+        if (next != null) {
             next.doSomething();
         }
     }

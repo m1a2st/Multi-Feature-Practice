@@ -1,5 +1,8 @@
 package com.example.spring;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.example.spring.models.request.UserAccountRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -9,16 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserAccountControllerTest {
 
     @Autowired
     MockMvc mockMvc;
+
     @Autowired
     ObjectMapper objectMapper;
 
@@ -26,8 +26,8 @@ public class UserAccountControllerTest {
     public void test_create() throws Exception {
         UserAccountRequest request = new UserAccountRequest(10, "test10", "test10", "test10");
         mockMvc.perform(post("/api/user-accounts/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk());
     }
 

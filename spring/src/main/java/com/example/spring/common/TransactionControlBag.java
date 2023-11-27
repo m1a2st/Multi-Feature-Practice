@@ -1,13 +1,12 @@
 package com.example.spring.common;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.context.annotation.RequestScope;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @RequestScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -34,7 +33,8 @@ public class TransactionControlBag {
                 if (!status.isCompleted() || status.isRollbackOnly()) {
                     ptm.rollback(status);
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 }

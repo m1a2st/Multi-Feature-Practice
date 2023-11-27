@@ -10,6 +10,7 @@ import com.manticoresearch.client.model.SearchRequest;
 import com.manticoresearch.client.model.SearchResponse;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -51,7 +52,7 @@ public class ManticoreClient {
         searchRequest.setLimit(10);
 
         SearchResponse search = searchApi.search(searchRequest);
-        System.out.println(search.getHits().getTotal());
+        System.out.println(Objects.requireNonNull(search.getHits()).getTotal());
     }
 
     private Request getSearchRequest() {

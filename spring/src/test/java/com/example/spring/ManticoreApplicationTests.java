@@ -14,8 +14,7 @@ class ManticoreApplicationTests {
     ManticoreClient manticoreClient;
 
     @Test
-    void contextLoads() {
-    }
+    void contextLoads() {}
 
     @Test
     public void testCreateTable() throws ApiException {

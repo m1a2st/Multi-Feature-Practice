@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -31,7 +30,8 @@ public class BigDecimalSerializer extends StdSerializer<BigDecimal> implements C
     }
 
     @Override
-    public void serialize(BigDecimal value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(BigDecimal value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+            throws IOException {
         if (Objects.isNull(value)) {
             jsonGenerator.writeString("-");
         } else {
@@ -49,7 +49,8 @@ public class BigDecimalSerializer extends StdSerializer<BigDecimal> implements C
     }
 
     @Override
-    public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty property) throws JsonMappingException {
+    public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty property)
+            throws JsonMappingException {
         return Optional.ofNullable(findFormatOverrides(prov, property, handledType()))
                 .filter(JsonFormat.Value::hasPattern)
                 .map(JsonFormat.Value::getPattern)

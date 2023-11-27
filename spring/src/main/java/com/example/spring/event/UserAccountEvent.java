@@ -1,14 +1,13 @@
 package com.example.spring.event;
 
+import static java.util.UUID.randomUUID;
+
 import com.example.spring.entity.postgres.UserAccountChangeLog;
+import java.time.Clock;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.context.ApplicationEvent;
-
-import java.time.Clock;
-
-import static java.util.UUID.randomUUID;
 
 @Getter
 @Setter
@@ -23,11 +22,7 @@ public class UserAccountEvent extends ApplicationEvent {
     private String newFirstName;
     private String newFastName;
 
-    public UserAccountEvent(Object source,
-                            Integer id,
-                            String newUserName,
-                            String newFirstName,
-                            String newFastName) {
+    public UserAccountEvent(Object source, Integer id, String newUserName, String newFirstName, String newFastName) {
         super(source);
         this.id = id;
         this.newUserName = newUserName;
@@ -35,14 +30,15 @@ public class UserAccountEvent extends ApplicationEvent {
         this.newFastName = newFastName;
     }
 
-    public UserAccountEvent(Object source,
-                            Integer id,
-                            String oldUserName,
-                            String oldFirstName,
-                            String oldLastName,
-                            String newUserName,
-                            String newFirstName,
-                            String newFastName) {
+    public UserAccountEvent(
+            Object source,
+            Integer id,
+            String oldUserName,
+            String oldFirstName,
+            String oldLastName,
+            String newUserName,
+            String newFirstName,
+            String newFastName) {
         super(source);
         this.id = id;
         this.oldUserName = oldUserName;

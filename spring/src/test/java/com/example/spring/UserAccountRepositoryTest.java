@@ -18,7 +18,7 @@ public class UserAccountRepositoryTest {
     }
 
     @Test
-    public void insert(){
+    public void insert() {
         UserAccount userAccount = new UserAccount();
         userAccount.setId(4);
         userAccount.setUserName("test4");

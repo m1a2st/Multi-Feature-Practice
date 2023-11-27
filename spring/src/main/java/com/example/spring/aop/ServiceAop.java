@@ -1,11 +1,10 @@
 package com.example.spring.aop;
 
+import java.util.Arrays;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 @Aspect
 @Component
@@ -37,8 +36,7 @@ public class ServiceAop {
     }
 
     @Pointcut("execution(* com.example.spring.service.*.*(..))")
-    public void servicePointcut() {
-    }
+    public void servicePointcut() {}
 
     @Before("servicePointcut()")
     public void beforeService() {

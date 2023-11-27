@@ -1,11 +1,9 @@
 package com.example.spring;
 
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import org.junit.jupiter.api.Test;
 
 public class LruDemo {
 
@@ -65,8 +63,7 @@ public class LruDemo {
         private Entry pre;
         private Entry next;
 
-        public Entry() {
-        }
+        public Entry() {}
 
         public Entry(int key, int value) {
             this.key = key;

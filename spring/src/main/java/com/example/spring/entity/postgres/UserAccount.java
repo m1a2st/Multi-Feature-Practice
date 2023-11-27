@@ -1,10 +1,9 @@
 package com.example.spring.entity.postgres;
 
 import com.example.spring.entity.UserAccountListener;
+import javax.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.persistence.*;
 
 @EntityListeners(UserAccountListener.class)
 @Getter
@@ -21,9 +20,11 @@ public class UserAccount {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String userName;
     private String firstName;
     private String lastName;
+
     @Transient
     private String fullName;
 

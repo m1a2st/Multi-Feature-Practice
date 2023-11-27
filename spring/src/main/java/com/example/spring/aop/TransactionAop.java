@@ -17,8 +17,9 @@ public class TransactionAop {
     private final TransactionService postgresTransactionService;
     private final TransactionService mysqlTransactionService;
 
-    public TransactionAop(@Qualifier("postgresTransactionService") TransactionService postgresTransactionService,
-                          @Qualifier("mysqlTransactionService") TransactionService mysqlTransactionService) {
+    public TransactionAop(
+            @Qualifier("postgresTransactionService") TransactionService postgresTransactionService,
+            @Qualifier("mysqlTransactionService") TransactionService mysqlTransactionService) {
         this.postgresTransactionService = postgresTransactionService;
         this.mysqlTransactionService = mysqlTransactionService;
     }

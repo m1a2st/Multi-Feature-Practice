@@ -2,6 +2,8 @@ package com.example.spring.config;
 
 import com.example.spring.common.TransactionControlBag;
 import com.example.spring.common.TransactionService;
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,16 +16,12 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
         basePackages = "com.example.spring.repository.mysql",
         entityManagerFactoryRef = "mysqlEntityManager",
-        transactionManagerRef = "mysqlTransactionManager"
-)
+        transactionManagerRef = "mysqlTransactionManager")
 public class mysqlConfig {
 
     @Bean
@@ -35,27 +33,26 @@ public class mysqlConfig {
     @Bean
     @ConfigurationProperties(prefix = "spring.mysql.datasource.hikari")
     public DataSource mysqlDataSource() {
-        return mysqlDataSourceProperties()
-                .initializeDataSourceBuilder()
-                .build();
+        return mysqlDataSourceProperties().initializeDataSourceBuilder().build();
     }
 
     @Bean(name = "mysqlEntityManager")
     public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
-        return builder
-                .dataSource(mysqlDataSource())
+        return builder.dataSource(mysqlDataSource())
                 .packages("com.example.spring.entity.mysql")
                 .build();
     }
 
     @Bean(name = "mysqlTransactionManager")
-    public PlatformTransactionManager mysqlTransactionManager(@Qualifier("mysqlEntityManager") EntityManagerFactory factory) {
+    public PlatformTransactionManager mysqlTransactionManager(
+            @Qualifier("mysqlEntityManager") EntityManagerFactory factory) {
         return new JpaTransactionManager(factory);
     }
 
     @Bean(name = "mysqlTransactionService")
-    public TransactionService mysqlTransactionService(@Qualifier("mysqlTransactionManager") PlatformTransactionManager platformTransactionManager,
-                                                      TransactionControlBag controlBag) {
+    public TransactionService mysqlTransactionService(
+            @Qualifier("mysqlTransactionManager") PlatformTransactionManager platformTransactionManager,
+            TransactionControlBag controlBag) {
         return new TransactionService(platformTransactionManager, controlBag);
     }
 }

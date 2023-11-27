@@ -1,11 +1,11 @@
 package com.example.spring.cor;
 
+import static java.util.Optional.ofNullable;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-
-import static java.util.Optional.ofNullable;
 
 public class Message {
     private final Map<String, String> content;
@@ -26,9 +26,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "content=" + content +
-                '}';
+        return "Message{" + "content=" + content + '}';
     }
 
     @Override

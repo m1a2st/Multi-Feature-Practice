@@ -1,9 +1,8 @@
 package com.example.spring.cor.repository.impl;
 
 import com.example.spring.cor.repository.PhoneNumberRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class PhoneNumberService implements PhoneNumberRepository {

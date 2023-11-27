@@ -1,8 +1,12 @@
 package com.example.spring.propmap;
 
+import static java.util.stream.Collectors.toList;
+
 import com.example.spring.entity.postgres.PropertiesMap;
 import com.example.spring.propmap.annotation.PropMapBean;
 import com.example.spring.propmap.models.PropMapGroup;
+import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -11,11 +15,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Map;
-
-import static java.util.stream.Collectors.toList;
 
 @Component
 @Slf4j

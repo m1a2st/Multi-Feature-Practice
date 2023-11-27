@@ -3,12 +3,6 @@ package com.example.spring.propmap;
 import com.example.spring.propmap.annotation.PropMapSubMap;
 import com.example.spring.propmap.annotation.PropMapSubMapDefaultValue;
 import com.example.spring.propmap.annotation.PropMapSubMapKey;
-import lombok.AllArgsConstructor;
-import org.springframework.core.env.Environment;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.util.StringUtils;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -19,6 +13,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import lombok.AllArgsConstructor;
+import org.springframework.core.env.Environment;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.util.StringUtils;
 
 @AllArgsConstructor
 public abstract class AbstractPropMapReflector<T1 extends Annotation, T2 extends Annotation> {
@@ -55,7 +54,7 @@ public abstract class AbstractPropMapReflector<T1 extends Annotation, T2 extends
                             value = data.get(keyAnnoValue);
                         }
 
-//                        overrideByEnvPropertiesIfExist(field, keyAnnoValue, value);
+                        //                        overrideByEnvPropertiesIfExist(field, keyAnnoValue, value);
                     } catch (Exception ignored) {
                     }
                 });
@@ -78,7 +77,8 @@ public abstract class AbstractPropMapReflector<T1 extends Annotation, T2 extends
      * 優先權最高，即使 DB 有設定，抑或是 Java 端有指定 DefaultValue，都會被 Properties 中的覆蓋
      * 格式 PROP_MAP_CUSTOM.{PROP_KEY}
      */
-    private void overrideByEnvPropertiesIfExist(Field field, String keyAnnoValue, String value) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
+    private void overrideByEnvPropertiesIfExist(Field field, String keyAnnoValue, String value)
+            throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
         String valueInEnv = environment.getProperty("PROP_MAP_CUSTOM." + keyAnnoValue);
         if (valueInEnv != null) {
             value = valueInEnv;
@@ -88,7 +88,8 @@ public abstract class AbstractPropMapReflector<T1 extends Annotation, T2 extends
         ReflectionUtils.setField(field, instance, convertValue(value, field.getType()));
     }
 
-    private Object convertValue(String value, Class<?> targetType) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    private Object convertValue(String value, Class<?> targetType)
+            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         if (value == null) {
             return null;
         }

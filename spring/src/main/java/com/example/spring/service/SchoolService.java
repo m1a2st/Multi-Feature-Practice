@@ -25,61 +25,36 @@ public class SchoolService {
     }
 
     public void setClassroomAndStudent() {
-        studentRepository.save(Student.builder()
-                .name("student1")
-                .age(10)
-                .build());
-        classRoomRepository.save(Classroom.builder()
-                .name("classroom1")
-                .build());
+        studentRepository.save(Student.builder().name("student1").age(10).build());
+        classRoomRepository.save(Classroom.builder().name("classroom1").build());
     }
 
     @PostgresTransaction
-    public void batchInsertClassroom(){
-        classRoomRepository.save(Classroom.builder()
-                .name("classroom4")
-                .build());
-        if(System.currentTimeMillis() % 2 == 0){
+    public void batchInsertClassroom() {
+        classRoomRepository.save(Classroom.builder().name("classroom4").build());
+        if (System.currentTimeMillis() % 2 == 0) {
             throw new RuntimeException("test");
         }
-        classRoomRepository.save(Classroom.builder()
-                .name("classroom5")
-                .build());
+        classRoomRepository.save(Classroom.builder().name("classroom5").build());
     }
 
     @MysqlTransaction
-    public void batchInsertStudent(){
-        studentRepository.save(Student.builder()
-                .name("student4")
-                .age(14)
-                .build());
-        if(System.currentTimeMillis() % 2 == 0){
+    public void batchInsertStudent() {
+        studentRepository.save(Student.builder().name("student4").age(14).build());
+        if (System.currentTimeMillis() % 2 == 0) {
             throw new RuntimeException("test");
         }
-        studentRepository.save(Student.builder()
-                .name("student5")
-                .age(15)
-                .build());
+        studentRepository.save(Student.builder().name("student5").age(15).build());
     }
 
     @MultipleSqlTransaction
-    public void batchInsertClassroomAndStudent(){
-        classRoomRepository.save(Classroom.builder()
-                .name("classroom6")
-                .build());
-        studentRepository.save(Student.builder()
-                .name("student6")
-                .age(16)
-                .build());
-        if(true){
+    public void batchInsertClassroomAndStudent() {
+        classRoomRepository.save(Classroom.builder().name("classroom6").build());
+        studentRepository.save(Student.builder().name("student6").age(16).build());
+        if (true) {
             throw new RuntimeException("test");
         }
-        classRoomRepository.save(Classroom.builder()
-                .name("classroom7")
-                .build());
-        studentRepository.save(Student.builder()
-                .name("student7")
-                .age(17)
-                .build());
+        classRoomRepository.save(Classroom.builder().name("classroom7").build());
+        studentRepository.save(Student.builder().name("student7").age(17).build());
     }
 }

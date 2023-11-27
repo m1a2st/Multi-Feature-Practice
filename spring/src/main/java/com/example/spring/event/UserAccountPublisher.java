@@ -15,24 +15,24 @@ public class UserAccountPublisher {
 
     public void publishEvent(UserAccount newUserAccount) {
         log.debug("Publishing custom event. ");
-        publisher.publishEvent(new UserAccountEvent(this,
+        publisher.publishEvent(new UserAccountEvent(
+                this,
                 newUserAccount.getId(),
                 newUserAccount.getUserName(),
                 newUserAccount.getFirstName(),
-                newUserAccount.getLastName()
-        ));
+                newUserAccount.getLastName()));
     }
 
     public void publishEvent(UserAccount oldUserAccount, UserAccount newUserAccount) {
         log.debug("Publishing custom event. ");
-        publisher.publishEvent(new UserAccountEvent(this,
+        publisher.publishEvent(new UserAccountEvent(
+                this,
                 oldUserAccount.getId(),
                 oldUserAccount.getUserName(),
                 oldUserAccount.getFirstName(),
                 oldUserAccount.getLastName(),
                 newUserAccount.getUserName(),
                 newUserAccount.getFirstName(),
-                newUserAccount.getLastName()
-        ));
+                newUserAccount.getLastName()));
     }
 }

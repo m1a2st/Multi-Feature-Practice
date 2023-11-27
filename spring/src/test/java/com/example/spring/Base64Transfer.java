@@ -1,10 +1,9 @@
 package com.example.spring;
 
-import org.testcontainers.shaded.org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
+import org.testcontainers.shaded.org.apache.commons.io.FileUtils;
 
 public class Base64Transfer {
     public static void main(String[] args) throws IOException {

@@ -4,8 +4,7 @@ import static org.springframework.util.StringUtils.capitalize;
 
 public class NotFoundException extends RuntimeException {
 
-    public NotFoundException() {
-    }
+    public NotFoundException() {}
 
     public NotFoundException(String message) {
         super(message);
@@ -56,10 +55,8 @@ public class NotFoundException extends RuntimeException {
     }
 }
 
-class main{
+class main {
     public static void main(String[] args) {
-        NotFoundException notFoundException =
-                NotFoundException.notFound("test").id(1);
-
+        NotFoundException notFoundException = NotFoundException.notFound("test").id(1);
     }
 }
