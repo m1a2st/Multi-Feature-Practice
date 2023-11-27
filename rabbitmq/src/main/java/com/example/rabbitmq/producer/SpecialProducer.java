@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
-import static com.example.rabbitmq.constants.Constants.NAME_COMMENT_NOTIFICATION_DIRECT_EXCHANGE;
-import static com.example.rabbitmq.constants.Constants.NAME_COMMENT_NOTIFICATION_FANOUT_EXCHANGE;
+import static com.example.rabbitmq.configs.constants.Constants.NAME_COMMENT_NOTIFICATION_DIRECT_EXCHANGE;
+import static com.example.rabbitmq.configs.constants.Constants.NAME_COMMENT_NOTIFICATION_FANOUT_EXCHANGE;
 import static com.example.rabbitmq.models.SpecialMsg.Mode.DIRECT;
 
 @Component

@@ -7,14 +7,14 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.rabbitmq.constants.Constants.*;
+import static com.example.rabbitmq.configs.constants.Constants.*;
 
 @Configuration
 public class RabbitConfig {
 
     /*******************************************************************************
      * Queue                                                                       *
-     * *****************************************************************************
+     *******************************************************************************
      */
     @Bean
     public Queue helloQueue() {
@@ -33,7 +33,7 @@ public class RabbitConfig {
 
     /*******************************************************************************
      * FANOUT Exchange                                                             *
-     * *****************************************************************************
+     *******************************************************************************
      */
 
     @Bean(name = BEAN_COMMENT_NOTIFICATION_FANOUT_EXCHANGE)
@@ -55,7 +55,7 @@ public class RabbitConfig {
 
     /*******************************************************************************
      * Direct Exchange                                                             *
-     * *****************************************************************************
+     *******************************************************************************
      */
     @Bean(name = BEAN_COMMENT_NOTIFICATION_DIRECT_EXCHANGE)
     public DirectExchange commentNotificationDirectExchange() {
@@ -78,7 +78,7 @@ public class RabbitConfig {
 
     /*******************************************************************************
      * Converter                                                                   *
-     * *****************************************************************************
+     *******************************************************************************
      */
 
     @Bean
@@ -91,7 +91,7 @@ public class RabbitConfig {
 
     /*******************************************************************************
      * RabbitTemplate                                                              *
-     * *****************************************************************************
+     *******************************************************************************
      */
 
     @Bean

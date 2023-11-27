@@ -1,4 +1,4 @@
-package com.example.rabbitmq.constants;
+package com.example.rabbitmq.configs.constants;
 
 public class Constants {
     public static final String HELLO_QUEUE = "hello";
