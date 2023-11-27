@@ -13,26 +13,26 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitConfig {
 
     /*******************************************************************************
-     * Queue *
+     * Queue
      *******************************************************************************
      */
-    @Bean
+    @Bean(name = BEAN_HELLO_QUEUE)
     public Queue helloQueue() {
-        return new Queue(HELLO_QUEUE);
+        return new Queue(NAME_HELLO_QUEUE);
     }
 
-    @Bean
+    @Bean(name = BEAN_INTERNAL_NOTIFICATION_QUEUE)
     public Queue internalNotificationQueue() {
         return new Queue(NAME_INTERNAL_NOTIFICATION_QUEUE);
     }
 
-    @Bean
+    @Bean(name = BEAN_EMAIL_NOTIFICATION_QUEUE)
     public Queue emailNotificationQueue() {
         return new Queue(NAME_EMAIL_NOTIFICATION_QUEUE);
     }
 
     /*******************************************************************************
-     * FANOUT Exchange *
+     * FANOUT Exchange
      *******************************************************************************
      */
     @Bean(name = BEAN_COMMENT_NOTIFICATION_FANOUT_EXCHANGE)
@@ -51,7 +51,7 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
-     * Direct Exchange *
+     * Direct Exchange
      *******************************************************************************
      */
     @Bean(name = BEAN_COMMENT_NOTIFICATION_DIRECT_EXCHANGE)
@@ -74,7 +74,37 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
-     * Converter *
+     * Routing Exchange
+     *******************************************************************************
+     */
+    @Bean(name = BEAN_COMMENT_NOTIFICATION_ROUTING_EXCHANGE)
+    public DirectExchange commentNotificationRoutingExchange() {
+        return new DirectExchange(NAME_COMMENT_NOTIFICATION_ROUTING_EXCHANGE);
+    }
+
+    @Bean
+    public Binding bindInternalNotificationQueueToRoutingExchangeForPostComment() {
+        return BindingBuilder.bind(internalNotificationQueue())
+                .to(commentNotificationRoutingExchange())
+                .with("post.comment");
+    }
+
+    @Bean
+    public Binding bindInternalNotificationQueueToRoutingExchangeForProductComment() {
+        return BindingBuilder.bind(internalNotificationQueue())
+                .to(commentNotificationRoutingExchange())
+                .with("product.comment");
+    }
+
+    @Bean
+    public Binding bindEmailNotificationQueueToRoutingExchangeForProductComment() {
+        return BindingBuilder.bind(emailNotificationQueue())
+                .to(commentNotificationRoutingExchange())
+                .with("product.comment");
+    }
+
+    /*******************************************************************************
+     * Converter
      *******************************************************************************
      */
     @Bean
@@ -86,7 +116,7 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
-     * RabbitTemplate *
+     * RabbitTemplate
      *******************************************************************************
      */
     @Bean

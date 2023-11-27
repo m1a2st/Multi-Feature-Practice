@@ -17,6 +17,8 @@ public class SpecialMsg implements Serializable {
 
     public enum Mode {
         FANOUT,
-        DIRECT
+        DIRECT,
+        ROUTING,
+        TOPIC
     }
 }
