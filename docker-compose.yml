@@ -1,0 +1,55 @@
+version: "3.0"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=postgres
+    ports:
+      - "11111:5432"
+    networks:
+      - myNetwork
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=test
+    ports:
+      - "11112:3306"
+    networks:
+      - myNetwork
+  rabbitmq:
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - myNetwork
+  manticore:
+    image: manticoresearch/manticore
+    environment:
+      - EXTRA=1
+    restart: always
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9316:9306"
+      - "9318:9308"
+    volumes:
+      - ./manticore_2:/var/lib/manticore
+    networks:
+      - myNetwork
+networks:
+  myNetwork:
+    driver: bridge
+
