@@ -1,11 +1,10 @@
 package com.example.rabbitmq.models;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +16,7 @@ public class SpecialMsg implements Serializable {
     private String routingKey;
 
     public enum Mode {
-        FANOUT, DIRECT
+        FANOUT,
+        DIRECT
     }
 }

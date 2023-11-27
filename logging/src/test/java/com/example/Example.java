@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 public class Example {
 
-    private final static Logger log = LoggerFactory.getLogger(Example.class);
-    private final static ch.qos.logback.classic.Logger parentLogger =
+    private static final Logger log = LoggerFactory.getLogger(Example.class);
+    private static final ch.qos.logback.classic.Logger parentLogger =
             (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Example.class);
 
     public static void main(String[] args) {

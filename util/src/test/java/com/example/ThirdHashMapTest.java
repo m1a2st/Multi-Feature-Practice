@@ -15,7 +15,7 @@ public class ThirdHashMapTest {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         map.put("1", "1");
         map.put("2", "2");
         map.put("3", "3");

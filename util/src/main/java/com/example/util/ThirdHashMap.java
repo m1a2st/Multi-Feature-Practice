@@ -2,8 +2,8 @@ package com.example.util;
 
 public class ThirdHashMap<K, V> {
 
-    private final static int DEFAULT_INITIAL_CAPACITY = 1 << 4;
-    private final static float DEFAULT_LOAD_FACTOR = 0.75f;
+    private static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int size;
     private Node[] buckets;
 
@@ -28,8 +28,7 @@ public class ThirdHashMap<K, V> {
         int index = getIndex(key, buckets.length);
         Node<K, V> node = buckets[index];
         while (node != null) {
-            if (node.key.hashCode() == key.hashCode() &&
-                    (node.key == key || node.key.equals(key))) {
+            if (node.key.hashCode() == key.hashCode() && (node.key == key || node.key.equals(key))) {
                 return node.value;
             }
             node = node.next;
@@ -87,7 +86,6 @@ public class ThirdHashMap<K, V> {
         int index = hashCode % length;
         return Math.abs(index);
     }
-
 
     class Node<K, V> {
         private K key;

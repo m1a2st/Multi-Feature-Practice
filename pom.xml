@@ -18,7 +18,6 @@
         <module>logging</module>
         <module>manticoresearch</module>
         <module>rabbitmq</module>
-<!--        <module>excel</module>-->
     </modules>
 
     <properties>
@@ -55,6 +54,11 @@
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.diffplug.spotless</groupId>
+            <artifactId>spotless-maven-plugin</artifactId>
+            <version>2.40.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,7 +75,33 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>format</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>apply</goal>
+                            <goal>check</goal>
+                            <goal>apply</goal>
+                        </goals>
+                        <configuration>
+                            <java>
+                                <includes>
+                                    <include>src/main/java/**/*.java</include> <!-- Check application code -->
+                                    <include>src/test/java/**/*.java</include> <!-- Check application tests code -->
+                                </includes>
+                                <palantirJavaFormat>
+                                    <version>2.10.0</version>                     <!-- optional -->
+                                    <style>PALANTIR</style>                       <!-- or AOSP/GOOGLE (optional) -->
+                                </palantirJavaFormat>
+                            </java>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>

@@ -1,5 +1,7 @@
 package com.example.rabbitmq.configs;
 
+import static com.example.rabbitmq.configs.constants.Constants.*;
+
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -7,13 +9,11 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.rabbitmq.configs.constants.Constants.*;
-
 @Configuration
 public class RabbitConfig {
 
     /*******************************************************************************
-     * Queue                                                                       *
+     * Queue *
      *******************************************************************************
      */
     @Bean
@@ -32,10 +32,9 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
-     * FANOUT Exchange                                                             *
+     * FANOUT Exchange *
      *******************************************************************************
      */
-
     @Bean(name = BEAN_COMMENT_NOTIFICATION_FANOUT_EXCHANGE)
     public FanoutExchange commentNotificationFanoutExchange() {
         return new FanoutExchange(NAME_COMMENT_NOTIFICATION_FANOUT_EXCHANGE);
@@ -43,18 +42,16 @@ public class RabbitConfig {
 
     @Bean
     public Binding bindInternalNotificationQueueToFanoutExchange() {
-        return BindingBuilder.bind(internalNotificationQueue())
-                .to(commentNotificationFanoutExchange());
+        return BindingBuilder.bind(internalNotificationQueue()).to(commentNotificationFanoutExchange());
     }
 
     @Bean
     public Binding bindEmailNotificationQueueToFanoutExchange() {
-        return BindingBuilder.bind(emailNotificationQueue())
-                .to(commentNotificationFanoutExchange());
+        return BindingBuilder.bind(emailNotificationQueue()).to(commentNotificationFanoutExchange());
     }
 
     /*******************************************************************************
-     * Direct Exchange                                                             *
+     * Direct Exchange *
      *******************************************************************************
      */
     @Bean(name = BEAN_COMMENT_NOTIFICATION_DIRECT_EXCHANGE)
@@ -77,10 +74,9 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
-     * Converter                                                                   *
+     * Converter *
      *******************************************************************************
      */
-
     @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {
         Jackson2JsonMessageConverter converter = new Jackson2JsonMessageConverter();
@@ -90,10 +86,9 @@ public class RabbitConfig {
     }
 
     /*******************************************************************************
-     * RabbitTemplate                                                              *
+     * RabbitTemplate *
      *******************************************************************************
      */
-
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);

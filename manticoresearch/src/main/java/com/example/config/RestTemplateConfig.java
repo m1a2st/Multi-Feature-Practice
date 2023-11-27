@@ -31,5 +31,4 @@ public class RestTemplateConfig {
     public UtilsApi utilsApi() {
         return new UtilsApi(apiClient());
     }
-
 }

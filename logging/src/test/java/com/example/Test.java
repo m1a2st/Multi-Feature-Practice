@@ -7,7 +7,7 @@ import org.slf4j.MarkerFactory;
 
 public class Test {
 
-    private final static Logger log = LoggerFactory.getLogger(Test.class);
+    private static final Logger log = LoggerFactory.getLogger(Test.class);
     private static final Marker TEST_MARKER = MarkerFactory.getMarker("TEST");
 
     public static void main(String[] args) {

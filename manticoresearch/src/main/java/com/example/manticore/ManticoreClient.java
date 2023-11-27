@@ -8,11 +8,10 @@ import com.manticoresearch.client.api.UtilsApi;
 import com.manticoresearch.client.model.InsertDocumentRequest;
 import com.manticoresearch.client.model.SearchRequest;
 import com.manticoresearch.client.model.SearchResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -30,10 +29,12 @@ public class ManticoreClient {
     public void insert() {
         try {
             InsertDocumentRequest newDoc = new InsertDocumentRequest();
-            newDoc.index("products").doc(new HashMap<>() {{
-                put("title", "Pet Hair Remover Glove");
-                put("price", 7.99);
-            }});
+            newDoc.index("products").doc(new HashMap<>() {
+                {
+                    put("title", "Pet Hair Remover Glove");
+                    put("price", 7.99);
+                }
+            });
             indexApi.insert(newDoc);
         } catch (ApiException e) {
             System.err.println("Exception when calling IndexApi#bulk");
@@ -57,13 +58,9 @@ public class ManticoreClient {
         return Request.builder()
                 .index("mediums")
                 .query(Request.Query.builder()
-                        .match(Request.Match.builder()
-                                .title("The")
-                                .build())
+                        .match(Request.Match.builder().title("The").build())
                         .build())
-                .highlight(Request.Highlight.builder()
-                        .fields(List.of("title"))
-                        .build())
+                .highlight(Request.Highlight.builder().fields(List.of("title")).build())
                 .build();
     }
 }

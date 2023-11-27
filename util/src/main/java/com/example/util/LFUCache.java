@@ -1,7 +1,6 @@
 package com.example.util;
 
 import java.util.Hashtable;
-import java.util.Optional;
 
 public class LFUCache {
 
@@ -57,13 +56,10 @@ public class LFUCache {
             this.value = value;
         }
 
-        public Node() {
-        }
+        public Node() {}
     }
 
-    /**
-     * add Node to head
-     */
+    /** add Node to head */
     private void addNodeToHead(Node node) {
         node.prev = head;
         node.next = head.next;
@@ -72,32 +68,24 @@ public class LFUCache {
         node.count++;
     }
 
-    /**
-     * delete node
-     */
+    /** delete node */
     private void removeNode(Node node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
 
-    /**
-     * delete last node
-     */
+    /** delete last node */
     private void removeLastNode() {
         removeNode(tail.prev);
     }
 
-    /**
-     * remove node to head
-     */
+    /** remove node to head */
     private void removeToHead(Node node) {
         removeNode(node);
         addNodeToHead(node);
     }
 
-    /**
-     * remove least frequency node
-     */
+    /** remove least frequency node */
     private Node removeLeastFreqNode() {
         // 因為 head.next 是剛插入的節點所以不參與查找
         Node pNode = head.next.next;

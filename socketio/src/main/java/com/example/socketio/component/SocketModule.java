@@ -5,16 +5,14 @@ import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 import com.example.socketio.message.Message;
-import lombok.extern.slf4j.Slf4j;
-
 import javax.inject.Named;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Named
 public class SocketModule {
 
     private final SocketIOServer socketIOServer;
-
 
     public SocketModule(SocketIOServer socketIOServer) {
         this.socketIOServer = socketIOServer;

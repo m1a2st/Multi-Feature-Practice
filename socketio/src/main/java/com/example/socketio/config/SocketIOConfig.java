@@ -14,7 +14,7 @@ public class SocketIOConfig {
     }
 
     @Bean
-    public SocketIOServer socketIOServer(){
+    public SocketIOServer socketIOServer() {
         com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
         config.setHostname(this.config.getHost());
         config.setPort(this.config.getPort());

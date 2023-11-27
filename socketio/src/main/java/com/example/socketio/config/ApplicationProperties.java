@@ -12,7 +12,7 @@ public class ApplicationProperties {
 
     @Setter
     @Getter
-    public static class Socketio{
+    public static class Socketio {
         private String host;
         private int port;
         private boolean active;

@@ -17,7 +17,7 @@ public class TestInsertModel {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class Insert{
+    public static class Insert {
         private String index;
         private int id;
         private Doc doc;
@@ -27,18 +27,16 @@ public class TestInsertModel {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class Doc{
+    public static class Doc {
         private String title;
     }
 
-    public static TestInsertModel init(int id, String title){
+    public static TestInsertModel init(int id, String title) {
         return TestInsertModel.builder()
                 .insert(Insert.builder()
                         .index("test")
                         .id(id)
-                        .doc(Doc.builder()
-                                .title(title)
-                                .build())
+                        .doc(Doc.builder().title(title).build())
                         .build())
                 .build();
     }

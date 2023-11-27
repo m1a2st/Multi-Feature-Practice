@@ -9,7 +9,7 @@ public class Message {
     private String content;
 
     public enum MessageType {
-        SERVER, CLIENT
+        SERVER,
+        CLIENT
     }
 }
-

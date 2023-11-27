@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class TestDatabase {
 
-    private final static Logger log = LoggerFactory.getLogger(TestDatabase.class);
+    private static final Logger log = LoggerFactory.getLogger(TestDatabase.class);
 
     public static void main(String[] args) {
         log.info("select * from users");

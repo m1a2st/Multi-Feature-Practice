@@ -2,9 +2,7 @@ package com.example.util;
 
 import java.util.Hashtable;
 
-/**
- * LRU Cache 刪除最近最少使用的頁面
- */
+/** LRU Cache 刪除最近最少使用的頁面 */
 public class LRUCacheLinkList {
 
     private final Hashtable<Integer, Node> cache = new Hashtable<>();
@@ -61,13 +59,10 @@ public class LRUCacheLinkList {
             this.value = value;
         }
 
-        public Node() {
-        }
+        public Node() {}
     }
 
-    /**
-     * add Node to head
-     */
+    /** add Node to head */
     private void addNodeToHead(Node node) {
         node.prev = head;
         node.next = head.next;
@@ -75,27 +70,20 @@ public class LRUCacheLinkList {
         head.next = node;
     }
 
-    /**
-     * delete node
-     */
+    /** delete node */
     private void removeNode(Node node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
 
-    /**
-     * delete last node
-     */
+    /** delete last node */
     private void removeLastNode() {
         removeNode(tail.prev);
     }
 
-    /**
-     * remove node to head
-     */
+    /** remove node to head */
     private void removeToHead(Node node) {
         removeNode(node);
         addNodeToHead(node);
     }
-
 }

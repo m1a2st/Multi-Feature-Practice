@@ -1,18 +1,18 @@
-//package com.example.socketio.runner;
+// package com.example.socketio.runner;
 //
-//import com.corundumstudio.socketio.SocketIOServer;
-//import lombok.RequiredArgsConstructor;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.stereotype.Component;
+// import com.corundumstudio.socketio.SocketIOServer;
+// import lombok.RequiredArgsConstructor;
+// import org.springframework.boot.CommandLineRunner;
+// import org.springframework.stereotype.Component;
 //
-//@Component
-//@RequiredArgsConstructor
-//public class ServerCommandLineRunner implements CommandLineRunner {
+// @Component
+// @RequiredArgsConstructor
+// public class ServerCommandLineRunner implements CommandLineRunner {
 //
-//    private final SocketIOServer socketIOServer;
+// private final SocketIOServer socketIOServer;
 //
-//    @Override
-//    public void run(String... args) throws Exception {
-//        socketIOServer.start();
-//    }
-//}
+// @Override
+// public void run(String... args) throws Exception {
+// socketIOServer.start();
+// }
+// }
