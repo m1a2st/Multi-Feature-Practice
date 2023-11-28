@@ -1,12 +1,12 @@
 <configuration>
+    <conversionRule conversionWord="clr" converterClass="com.example.LogbackColorful"/>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%green(%d{YYYY-MM-dd HH:mm:ss.SSS}) %magenta([%thread]) %clr(%-5level) %cyan(%logger{36}) - %clr(%msg%n)</pattern>
+            <charset>utf8</charset>
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
@@ -33,17 +33,17 @@
             <totalSizeCap>50MB</totalSizeCap>
         </rollingPolicy>
     </appender>
-<!--    <logger name="com.example.LogBackRollingExample" level="info">-->
-<!--        <appender-ref ref="STDOUT"/>-->
-<!--        <appender-ref ref="DB"/>-->
-<!--    </logger>-->
-    <root level="info">
+    <!--    <logger name="com.example.LogBackRollingExample" level="info">-->
+    <!--        <appender-ref ref="STDOUT"/>-->
+    <!--        <appender-ref ref="DB"/>-->
+    <!--    </logger>-->
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
-    <root level="debug">
+    <root level="DEBUG">
         <appender-ref ref="FILE"/>
     </root>
-    <root level="trace">
+    <root level="TRACE">
         <appender-ref ref="DB"/>
     </root>
 </configuration>

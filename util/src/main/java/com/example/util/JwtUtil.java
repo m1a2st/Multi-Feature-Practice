@@ -1,22 +1,22 @@
 package com.example.util;
 
+import static com.example.util.JwtUtil.Time.HOUR;
+import static com.example.util.JwtUtil.Time.MINUTE;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-
-import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.example.util.JwtUtil.Time.HOUR;
-import static com.example.util.JwtUtil.Time.MINUTE;
+import javax.crypto.SecretKey;
 
 public class JwtUtil {
 
-    private static final String secret = "e64159310c312e7d96e497b67cf2a388a5fcf9be4dd38ac709c491680961e7ce1540aa95d8c557758b80afbd7a3a6322bbcb268134e11d19b41d893e617c1fe9";
+    private static final String secret =
+            "e64159310c312e7d96e497b67cf2a388a5fcf9be4dd38ac709c491680961e7ce1540aa95d8c557758b80afbd7a3a6322bbcb268134e11d19b41d893e617c1fe9";
     private static final long expiration = 10000L;
     private static final SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes());
     private static final String issuer = "com.example";
@@ -49,25 +49,16 @@ public class JwtUtil {
     }
 
     public static Object getSubject(String token) {
-        return Jwts.parser()
-                .verifyWith(secretKey)
-                .build()
-                .parse(token)
-                .getPayload();
+        return Jwts.parser().verifyWith(secretKey).build().parse(token).getPayload();
     }
 
     public String generateJwt(String sub, Map<String, Object> customClaims) {
-        return generateJwt(sub,
-                customClaims,
-                getExpiration(HOUR, 1));
+        return generateJwt(sub, customClaims, getExpiration(HOUR, 1));
     }
 
     public String generateRefreshJwt(String sub, String accessToken) {
         Key secretKey = Keys.hmacShaKeyFor(accessToken.getBytes());
-        return generateJwt(sub,
-                new HashMap<>(),
-                getExpiration(HOUR, 2),
-                secretKey);
+        return generateJwt(sub, new HashMap<>(), getExpiration(HOUR, 2), secretKey);
     }
 
     public String generateJwt(String sub, Map<String, Object> customClaims, Date expiration) {
@@ -75,17 +66,11 @@ public class JwtUtil {
     }
 
     public String generateJwt(String sub, Map<String, Object> customClaims, Date expiration, Key secretKey) {
-        Claims claims = Jwts.claims()
-                .subject(sub)
-                .expiration(expiration)
-                .issuer(issuer)
-                .build();
+        Claims claims =
+                Jwts.claims().subject(sub).expiration(expiration).issuer(issuer).build();
         claims.putAll(customClaims);
 
-        return Jwts.builder()
-                .claims(claims)
-                .signWith(secretKey)
-                .compact();
+        return Jwts.builder().claims(claims).signWith(secretKey).compact();
     }
 
     private Date getExpiration(Time field, Integer amount) {

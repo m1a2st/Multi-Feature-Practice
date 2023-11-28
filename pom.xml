@@ -94,7 +94,8 @@
                                 </includes>
                                 <palantirJavaFormat>
                                     <version>2.10.0</version>                     <!-- optional -->
-                                    <style>PALANTIR</style>                       <!-- or PALANTIR/AOSP/GOOGLE (optional) -->
+                                    <style>PALANTIR
+                                    </style>                       <!-- or PALANTIR/AOSP/GOOGLE (optional) -->
                                 </palantirJavaFormat>
                             </java>
                         </configuration>

@@ -25,11 +25,11 @@
             <artifactId>Multi-Architecture-Rabbitmq</artifactId>
             <version>${revision}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.example</groupId>-->
-<!--            <artifactId>Multi-Architecture-Logging</artifactId>-->
-<!--            <version>${revision}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>Multi-Architecture-Logging</artifactId>
+            <version>${revision}</version>
+        </dependency>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>Multi-Architecture-Manticore</artifactId>
