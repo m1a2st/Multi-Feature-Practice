@@ -17,7 +17,7 @@ public class BakeryController {
     @GetMapping("/bake/{bakedGood}")
     public DeferredResult<String> publish(@PathVariable String bakedGood, @RequestParam Integer bakeTime) {
         DeferredResult<String> output = new DeferredResult<>();
-        bakers.execute(()->{
+        bakers.execute(() -> {
             try {
                 Thread.sleep(bakeTime);
                 output.setResult(format("Bake for %s complete and order dispatched. Enjoy!", bakedGood));
@@ -25,7 +25,6 @@ public class BakeryController {
                 output.setErrorResult("Something went wrong with your order!");
             }
         });
-
         return output;
     }
 }
