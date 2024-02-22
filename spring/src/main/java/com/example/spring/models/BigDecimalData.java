@@ -23,7 +23,7 @@ public class BigDecimalData {
     @DefaultDecimalFormat
     private BigDecimal one;
 
-    @MoneyFormat
+    @MoneyFormat(negative = true)
     private BigDecimal two;
 
     @RateFormat

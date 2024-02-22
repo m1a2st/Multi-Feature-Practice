@@ -37,6 +37,15 @@
     <!--        <appender-ref ref="STDOUT"/>-->
     <!--        <appender-ref ref="DB"/>-->
     <!--    </logger>-->
+
+    <!-- hibernate config-->
+    <logger name="org.hibernate.SQL" level="WARN"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="WARN"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="WARN"/>
+    <logger name="org.hibernate.type" level="WARN"/>
+    <logger name="org.hibernate.engine.spi.QueryParameters" level="WARN"/>
+    <logger name="org.hibernate.engine.query.spi.HQLQueryPlan" level="WARN"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>

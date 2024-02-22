@@ -9,7 +9,7 @@ public class MessageFilter extends Filter<ILoggingEvent> {
     @Override
     public FilterReply decide(ILoggingEvent event) {
         String message = event.getMessage();
-        if (message.contains("update")) {
+        if (message.contains("Hibernate:")) {
             return FilterReply.ACCEPT;
         } else {
             return FilterReply.DENY;

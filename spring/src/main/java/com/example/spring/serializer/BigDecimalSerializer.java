@@ -1,5 +1,6 @@
 package com.example.spring.serializer;
 
+import com.example.spring.annotation.bigdecimal.MoneyFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;
@@ -19,6 +20,7 @@ public class BigDecimalSerializer extends StdSerializer<BigDecimal> implements C
 
     private DecimalFormat decimalFormat;
     private static final int DEFAULT_SCALE = 2;
+    private boolean isAccountNegativeNumber = false;
 
     public BigDecimalSerializer() {
         super(BigDecimal.class);
@@ -51,11 +53,19 @@ public class BigDecimalSerializer extends StdSerializer<BigDecimal> implements C
     @Override
     public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty property)
             throws JsonMappingException {
+        settingAccountingNegativeNumber(property);
         return Optional.ofNullable(findFormatOverrides(prov, property, handledType()))
                 .filter(JsonFormat.Value::hasPattern)
                 .map(JsonFormat.Value::getPattern)
                 .map(DecimalFormat::new)
                 .map(BigDecimalSerializer::new)
                 .orElse(this);
+    }
+
+    private void settingAccountingNegativeNumber(BeanProperty property) {
+        MoneyFormat annotation = property.getAnnotation(MoneyFormat.class);
+        if (annotation != null) {
+            this.isAccountNegativeNumber = annotation.negative();
+        }
     }
 }

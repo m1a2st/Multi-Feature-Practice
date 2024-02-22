@@ -11,4 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 @JacksonAnnotationsInside
 @JsonFormat(pattern = "###,###,###")
 @JsonSerialize(using = BigDecimalSerializer.class)
-public @interface MoneyFormat {}
+public @interface MoneyFormat {
+
+    boolean negative() default false;
+}

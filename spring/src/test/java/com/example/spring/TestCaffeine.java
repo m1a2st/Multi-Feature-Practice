@@ -61,7 +61,8 @@ public class TestCaffeine {
 
     @Test
     public void testController() throws Exception {
-        mockMvc.perform(get("/test")).andExpect(status().isOk()).andDo(print());
+        mockMvc.perform(get("/test"))
+                .andExpect(status().isOk()).andDo(print());
     }
 
     @Test

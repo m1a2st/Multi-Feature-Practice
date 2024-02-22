@@ -1,0 +1,54 @@
+<configuration>
+    <conversionRule conversionWord="clr" converterClass="com.example.LogbackColorful"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%green(%d{YYYY-MM-dd HH:mm:ss.SSS}) %magenta([%thread]) %clr(%-5level) %cyan(%logger{36}) - %clr(%msg%n)</pattern>
+            <charset>UTF8</charset>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logging/logs/app.log</file>
+        <filter class="com.example.MessageFilter"/>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="DB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logging/logs/db.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logging/logs/roll-by-time-and-size/app.%d{yyyy-MM-dd-mm}.%i.log.zip</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>50MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <!--    <logger name="com.example.LogBackRollingExample" level="info">-->
+    <!--        <appender-ref ref="STDOUT"/>-->
+    <!--        <appender-ref ref="DB"/>-->
+    <!--    </logger>-->
+
+    <!-- hibernate config-->
+    <logger name="org.hibernate.type" level="ALL" />
+    <logger name="org.hibernate" level="ALL" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <root level="DEBUG">
+        <appender-ref ref="FILE"/>
+    </root>
+    <root level="TRACE">
+        <appender-ref ref="DB"/>
+    </root>
+</configuration>
